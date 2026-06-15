@@ -216,3 +216,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# Resume Analyzer specific
+uploads/
+database.db
+*.db
+#flask
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Resume Analyzer specific
+uploads/
+*.db
