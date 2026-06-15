@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="auth-wrapper">
+
+    <h1 class="main-title">AI Resume Evaluation</h1>
+
+    <div class="auth-box">
+
+        <h2>Create Account 🚀</h2>
+        <p>Start your journey</p>
+
+        <form method="POST" onsubmit="return validateForm()">
+
+            <!-- USERNAME -->
+            <div class="input-group">
+                <input type="text" name="username" required>
+                <label>Username</label>
+            </div>
+
+            <!-- EMAIL -->
+            <div class="input-group">
+                <input type="email" name="email" required>
+                <label>Email Address</label>
+            </div>
+
+            <!-- PASSWORD -->
+            <div class="input-group password-box">
+                <input type="password" id="password" name="password" required onkeyup="checkStrength()">
+                <label>Password</label>
+                <span class="toggle" onclick="togglePassword()">👁</span>
+            </div>
+
+            <!-- STRENGTH -->
+            <div id="strengthBar"></div>
+            <p id="strengthText"></p>
+
+            <!-- CONFIRM PASSWORD -->
+            <div class="input-group">
+                <input type="password" id="confirm" name="confirm_password" required>
+                <label>Confirm Password</label>
+            </div>
+
+            <!-- ERROR -->
+            <p id="errorMsg" class="error"></p>
+
+            <!-- BUTTON -->
+            <button type="submit">Register</button>
+
+        </form>
+
+        <p class="switch">
+            Already have an account? <a href="/">Login</a>
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

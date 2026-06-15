@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="auth-wrapper">
+
+    <h1 class="main-title">AI Resume Evaluation</h1>
+
+    <div class="auth-box">
+
+        <h2>Welcome Back 👋</h2>
+        <p>Login to continue</p>
+
+        <form method="POST" onsubmit="showLoader()">
+
+            <!-- USERNAME -->
+            <div class="input-group">
+                <input type="text" name="username" required>
+                <label>Username or Email</label>
+            </div>
+
+            <!-- PASSWORD -->
+            <div class="input-group password-box">
+                <input type="password" id="password" name="password" required>
+                <label>Password</label>
+                <span onclick="togglePassword()" id="eyeIcon" class="toggle">👁</span>
+            </div>
+
+            <!-- 👑 ROLE SELECT -->
+            <div class="input-group">
+                <select name="role" required>
+                    <option value="user">👤 User Login</option>
+                    <option value="admin">👑 Admin Login</option>
+                </select>
+            </div>
+
+            <!-- ERROR MESSAGE -->
+            {% if error %}
+                <p class="error">{{error}}</p>
+            {% endif %}
+
+            <!-- BUTTON -->
+            <button id="loginBtn" type="submit">Login</button>
+
+        </form>
+
+        <p class="switch">
+            Don't have an account? <a href="/register">Register</a>
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

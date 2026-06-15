@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Resume Evaluation</title>
+<link rel="stylesheet" href="/static/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>🚀 Evaluation</h2>
+    <a href="/home" class="active">🏠 Home</a>
+    <a href="/admin">📊 Admin</a>
+    <a href="/logout">🚪 Logout</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <h2>📄 Resume Evaluation</h2>
+    <p class="subtitle">Upload your resume and get AI-powered insights</p>
+
+    <div class="card">
+
+        <form action="/analyze" method="POST" enctype="multipart/form-data">
+
+<!-- ROLE -->
+            <label>🎯 Select Role</label>
+            <select name="role" required>
+                <option value="">Choose Role</option>
+                <option value="software_engineer">Software Engineer</option>
+                <option value="data_scientist">Data Scientist</option>
+                <option value="data_analyst">Data Analyst</option>
+                <option value="ml_engineer">Machine Learning Engineer</option>
+                <option value="fullstack_developer">Full Stack Developer</option>
+                <option value="frontend_developer">Frontend Developer</option>
+                <option value="backend_developer">Backend Developer</option>
+                <option value="devops_engineer">DevOps Engineer</option>
+                <option value="cloud_engineer">Cloud Engineer</option>
+                <option value="cybersecurity_analyst">Cybersecurity Analyst</option>
+            
+            </select>
+
+
+            <!-- FILE UPLOAD -->
+            <label>📎 Upload Resume</label>
+
+            <div class="upload-box" id="uploadBox">
+                <p>Drag & Drop Resume Here</p>
+                <span>or click to upload</span>
+                <input type="file" name="resume" id="fileInput" required hidden>
+            </div>
+
+            <!-- FILE NAME -->
+            <p id="fileName" class="file-name"></p>
+
+            <!-- BUTTON -->
+            <button type="submit">🚀 Analyze Resume</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- JS -->
+<script>
+const uploadBox = document.getElementById("uploadBox");
+const fileInput = document.getElementById("fileInput");
+const fileName = document.getElementById("fileName");
+
+uploadBox.addEventListener("click", () => fileInput.click());
+
+fileInput.addEventListener("change", () => {
+    fileName.innerText = "📄 " + fileInput.files[0].name;
+});
+
+/* DRAG DROP */
+uploadBox.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    uploadBox.style.border = "2px dashed #6366f1";
+});
+
+uploadBox.addEventListener("dragleave", () => {
+    uploadBox.style.border = "2px dashed #555";
+});
+
+uploadBox.addEventListener("drop", (e) => {
+    e.preventDefault();
+    fileInput.files = e.dataTransfer.files;
+    fileName.innerText = "📄 " + e.dataTransfer.files[0].name;
+});
+</script>
+
+</body>
+</html>
